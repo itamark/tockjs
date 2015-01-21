@@ -6,6 +6,7 @@
 	position:relative;
 	border-radius:50%;
 	background:yellow;
+	text-align: center;
 }
 
 .clockbody{
@@ -36,4 +37,11 @@ hr.hand.two{
 
 hr.hand.three{
 	width:40%;
+}
+
+span.timeText {
+width: 0px;
+position: absolute;
+bottom: -30px;
+left: 30%;
 }

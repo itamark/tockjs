@@ -1,7 +1,4 @@
 function tock(params){
-	params = {
-		appendTo: document.getElementsByTagName('body')[0]
-	}
 	createClock(params);
 	runClock();
 }
@@ -15,6 +12,7 @@ function createClock(params){
 	var handOne = document.createElement('hr');
 	var handTwo = document.createElement('hr');
 	var handThree = document.createElement('hr');
+	var timeText = document.createElement('span');
 
 	// give clock elements names
 	clockContainer.className = 'clockContainer';
@@ -24,14 +22,17 @@ function createClock(params){
 	handOne.className = 'hand one';
 	handTwo.className = 'hand two';
 	handThree.className = 'hand three';
+	timeText.className = 'timeText';
 
 	clockContainer.appendChild(clockBodyOne);
 	clockContainer.appendChild(clockBodyTwo);
 	clockContainer.appendChild(clockBodyThree);
+	clockContainer.appendChild(timeText);
 	clockBodyOne.appendChild(handOne);
 	clockBodyTwo.appendChild(handTwo);
 	clockBodyThree.appendChild(handThree);
 	params.appendTo.appendChild(clockContainer);
+	
 
 
 setInterval(function() {
@@ -57,11 +58,9 @@ function runClock(){
 	document.getElementsByClassName('clockbody one')[0].style.cssText = "-ms-transform: rotate("+initialHours+"deg); -webkit-transform: rotate("+initialHours+"deg); transform: rotate("+initialHours+"deg);";
 	document.getElementsByClassName('clockbody two')[0].style.cssText = "-ms-transform: rotate("+initialMinutes+"deg); -webkit-transform: rotate("+initialMinutes+"deg); transform: rotate("+initialMinutes+"deg);";
 	document.getElementsByClassName('clockbody three')[0].style.cssText = "-ms-transform: rotate("+initialSeconds+"deg); -webkit-transform: rotate("+initialSeconds+"deg); transform: rotate("+initialSeconds+"deg);";
+	document.getElementsByClassName('timeText')[0].innerHTML = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
 
 }
 
 
 
-window.onload = function(){
-	tock();
-}
